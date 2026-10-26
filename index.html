@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Robbis Abenteuer</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+:root { color-scheme: light; }
+*,::before,::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  background: #2D1B69;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka One', cursive;
+}
+.book {
+  position: relative;
+  width: min(100vw, 420px);
+  height: min(100svh, 660px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 64px rgba(0,0,0,.6);
+  display: flex;
+  flex-direction: column;
+}
+.pages { position: relative; flex: 1; min-height: 0; }
+.page {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transition: opacity .28s ease;
+}
+.page.on { opacity: 1; pointer-events: auto; }
+.pic { flex: 1; min-height: 0; overflow: hidden; }
+.pic img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top; }
+.txt {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(.92rem, 3.5vw, 1.18rem);
+  line-height: 1.55;
+  text-align: center;
+  color: #fff;
+  padding: 12px max(16px,env(safe-area-inset-right,0px)) 68px max(16px,env(safe-area-inset-left,0px));
+  min-height: 90px;
+}
+.nav {
+  position: absolute;
+  bottom: max(12px,env(safe-area-inset-bottom,0px));
+  left: 0; right: 0;
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px;
+}
+.btn {
+  background: rgba(255,255,255,.9);
+  border: none; border-radius: 50%;
+  width: 46px; height: 46px;
+  font-size: 1.4rem; cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,.3);
+  display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .1s;
+}
+.btn:active { transform: scale(.88); }
+.btn:disabled { opacity: .2; pointer-events: none; }
+.pg {
+  font-family: 'Fredoka One', cursive;
+  color: rgba(255,255,255,.85);
+  min-width: 80px; text-align: center;
+  font-size: .85rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  line-height: 1.3;
+}
+.chapter-div {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 18px;
+  background: linear-gradient(170deg, #1A3D1A 0%, #0D2B0D 100%);
+  text-align: center;
+  padding: 40px 28px;
+}
+.chapter-div .trees { font-size: 3.8rem; }
+.chapter-div .num {
+  font-size: .85rem;
+  color: rgba(255,255,255,.55);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.chapter-div .ctitle {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2rem;
+  color: #fff;
+  line-height: 1.25;
+}
+.chapter-div .csub { font-size: .9rem; color: rgba(255,255,255,.6); }
+</style>
+</head>
+<body>
+<div class="book">
+<div class="pages" id="pages">
+
+<!-- ========== GESCHICHTE 1: Robbi moechte Haare haben ========== -->
+
+<!-- G1 p0: TITEL -->
+<div class="page on">
+  <div class="pic"><img src="img/p0_title.png" alt="Rosa Robbi mit bunten Knetmasse-Haaren auf einer Wiese"></div>
+  <div class="txt" style="background:#D4680A;">Ein Buch f&uuml;r kleine Roboterfans</div>
+</div>
+
+<!-- G1 p1 -->
+<div class="page">
+  <div class="pic"><img src="img/p1_intro.png" alt="Robbi steht froehlich auf einer gruenen Wiese"></div>
+  <div class="txt" style="background:#2471A3;">Das ist Robbi! Robbi ist ein Roboter mit goldenen Antennen, einem eckigen Kopf &mdash; und einem riesengroßen L&auml;cheln. Am liebsten entdeckt er die Welt!</div>
+</div>
+
+<!-- G1 p2 -->
+<div class="page">
+  <div class="pic"><img src="img/p2_unicorn.png" alt="Robbi staunt ueber die bunte Regenbogenmaehne eines weissen Einhorns"></div>
+  <div class="txt" style="background:#8E44AD;">Eines Tages trifft Robbi ein Einhorn mit einer M&auml;hne in allen Regenbogenfarben: Rot, Orange, Gelb, Gr&uuml;n, Blau und Violett! &raquo;Oh!&laquo;, ruft Robbi. &raquo;Ich w&uuml;nschte, ich h&auml;tte auch solche bunten Haare!&laquo;</div>
+</div>
+
+<!-- G1 p3 -->
+<div class="page">
+  <div class="pic"><img src="img/p3_unicorn_tells.png" alt="Das Einhorn fluestert Robbi geheimnisvoll von der Zauberfriseurin"></div>
+  <div class="txt" style="background:#B7540A;">Das Einhorn l&auml;chelt und zwinkert ihm zu. &raquo;Ich kenne jemanden, der dir helfen kann!&laquo;, fl&uuml;stert es geheimnisvoll. &raquo;Die Zauberfriseurin! Sie wohnt im rosa Haus am Ende des Weges.&laquo;</div>
+</div>
+
+<!-- G1 p4 -->
+<div class="page">
+  <div class="pic"><img src="img/p4_hiding.png" alt="Robbis Antennentips und Fuesschen lugen hinter einem Baum beim Friseursalon hervor"></div>
+  <div class="txt" style="background:#1E8449;">Robbi l&auml;uft und l&auml;uft &mdash; bis er das rosa Haus sieht! Aber oh&hellip; sein Herzchen klopft ganz laut. Er traut sich nicht rein und versteckt sich hinter dem gro&szlig;en Baum &mdash; doch seine goldenen Antennenspitzen verraten ihn schon!</div>
+</div>
+
+<!-- G1 p5 -->
+<div class="page">
+  <div class="pic"><img src="img/p5_salon.png" alt="Die Friseurin oeffnet die Tuer und ruft; Robbi lugt schüchtern herein"></div>
+  <div class="txt" style="background:#7D3C98;">Die Friseurin schaut aus dem Fenster und entdeckt Robbi! &raquo;Hallo! Kann ich dir helfen? Brauchst du etwas?&laquo; &raquo;Ich h&auml;tte so gerne Haare wie ein Einhorn&laquo;, fl&uuml;stert Robbi, &raquo;aber ich traue mich nicht.&laquo; &raquo;Keine Angst!&laquo;, sagt die Friseurin warm. &raquo;Bei mir ist jeder willkommen!&laquo;</div>
+</div>
+
+<!-- G1 p6 -->
+<div class="page">
+  <div class="pic"><img src="img/p6_magic.png" alt="Robbi sitzt staunend im Friseurstuhl, Funken und Sterne wirbeln um seinen Kopf"></div>
+  <div class="txt" style="background:#1A1A50;">Schnipp! Schnapp! Wuuusch! Die Friseurin arbeitet und lacht und zaubert. Robbi macht die Augen ganz gro&szlig; &mdash; was passiert da nur?</div>
+</div>
+
+<!-- G1 p7: FINALE -->
+<div class="page">
+  <div class="pic"><img src="img/p7_finale.png" alt="Robbi jubelt mit wilden bunten Knetmasse-Haaren, Konfetti fliegt ueberall"></div>
+  <div class="txt" style="background:#C0392B;">Rosa! Lila! Gelb! Gr&uuml;n! Robbi springt auf und schaut in den Spiegel. Er kann es kaum glauben! &raquo;Das&hellip; das bin ICH!&laquo;, jauchzt er &mdash; und tanzt vor Freude durch den ganzen Salon!</div>
+</div>
+
+<!-- ========== KAPITELTRENNSEITE ========== -->
+<div class="page">
+  <div class="pic">
+    <div class="chapter-div">
+      <div class="trees">&#127794;&#127807;&#127794;</div>
+      <div class="num">Geschichte 2</div>
+      <div class="ctitle">Robbi im<br>M&auml;rchenwald</div>
+      <div class="csub">Ein neues Abenteuer beginnt &hellip;</div>
+    </div>
+  </div>
+  <div class="txt" style="background:#1A3D1A;min-height:0;padding-bottom:68px;"></div>
+</div>
+
+<!-- ========== GESCHICHTE 2: Robbi im Maerchenwald ========== -->
+
+<!-- G2 p0: TITEL -->
+<div class="page">
+  <div class="pic"><img src="img/g2_p0_title.png" alt="Robbi mit langem Waldblumen-Zopf im leuchtenden Maerchenwald"></div>
+  <div class="txt" style="background:#1A4D1A;">Ein neues Abenteuer f&uuml;r kleine Roboterfans</div>
+</div>
+
+<!-- G2 p1 -->
+<div class="page">
+  <div class="pic"><img src="img/g2_p1.png" alt="Robbi kaemmt auf einer Wiese seine bunten Salonhaare"></div>
+  <div class="txt" style="background:#C49A17;">Robbi sitzt auf der Wiese und k&auml;mmt stolz seine bunten Haare. Da &mdash; ein glitzerndes Licht tanzt aus dem Wald heraus. &raquo;Was ist das?&laquo;, fragt sich Robbi.</div>
+</div>
+
+<!-- G2 p2 -->
+<div class="page">
+  <div class="pic"><img src="img/g2_p2.png" alt="Robbi betritt staunend den Maerchenwald, Pilze und Blaetter leuchten"></div>
+  <div class="txt" style="background:#0E6655;">Robbi folgt dem Licht in den M&auml;rchenwald. Alles leuchtet: die Pilze, die Bl&auml;tter, sogar die Luft! &raquo;Dieser Wald ist wie ein Traum!&laquo;</div>
+</div>
+
+<!-- G2 p3 -->
+<div class="page">
+  <div class="pic"><img src="img/g2_p3.png" alt="Magische Ranken schlingen sich in Robbis Haare, bunte Blueten erscheinen"></div>
+  <div class="txt" style="background:#6D4C41;">Magische Ranken und &Auml;ste strecken sich aus &mdash; und schlingen sich sanft in Robbis Haare. Bunte Bl&uuml;ten knuddeln sich dazwischen. &raquo;He! Was macht ihr da?&laquo;, lacht Robbi &uuml;berrascht.</div>
+</div>
+
+<!-- G2 p4 -->
+<div class="page">
+  <div class="pic"><img src="img/g2_p4.png" alt="Schmetterling, Kaefer und Waldgeist schmiegen sich in Robbis immer laengere Haare"></div>
+  <div class="txt" style="background:#1E8449;">Ein Schmetterling, ein leuchtender K&auml;fer, ein kleiner Waldgeist &mdash; alle wollen in Robbis Haare! Die Haare wachsen und wachsen. &raquo;Meine Haare! Sie werden immer l&auml;nger!&laquo;</div>
+</div>
+
+<!-- G2 p5 -->
+<div class="page">
+  <div class="pic"><img src="img/g2_p5.png" alt="Robbi verheddert sich in seinen meterlangen Haaren und faellt hin"></div>
+  <div class="txt" style="background:#CA6F1E;">Robbis Haare sind jetzt so lang, dass er sich beim Gehen verheddert &mdash; und hinf&auml;llt! &raquo;Hilfe!&laquo;, ruft er. &raquo;Ich komme nicht mehr vorw&auml;rts!&laquo;</div>
+</div>
+
+<!-- G2 p6: FUCHS FRAGT -->
+<div class="page">
+  <div class="pic"><img src="img/g2_p6.png" alt="Ein roter Fuchs lugt neugierig hinter einem Baum hervor und schaut Robbi an"></div>
+  <div class="txt" style="background:#922B21;">Ein roter Fuchs lugt hinter einem Baum hervor und schaut Robbi mit gro&szlig;en Augen an. &raquo;Brauchst du Hilfe?&laquo;, fragt er.</div>
+</div>
+
+<!-- G2 p7: FUCHS HILFT -->
+<div class="page">
+  <div class="pic"><img src="img/g2_p7.png" alt="Der Fuchs flicht Robbis lange Haare zu einem wunderschoenen Waldblumen-Zopf"></div>
+  <div class="txt" style="background:#B7770A;">Robbi nickt erleichtert. Der Fuchs nimmt die langen Haare und flicht sie zu einem wundersch&ouml;nen Zopf voller Waldblumen. &raquo;So! Jetzt tanzt du damit &mdash; statt zu stolpern!&laquo;</div>
+</div>
+
+<!-- G2 p8: FINALE -->
+<div class="page">
+  <div class="pic"><img src="img/g2_p8.png" alt="Robbi taenzelt mit langem Waldblumen-Zopf aus dem Wald; ein goldener Brief flattert auf ihn zu"></div>
+  <div class="txt" style="background:#5B2C6F;">Rosa! Lila! Und jetzt auch Waldgr&uuml;n! Robbi t&auml;nzelt gl&uuml;cklich aus dem Wald &mdash; da flattert ein goldener Brief auf ihn zu. &raquo;Was steht da nur drin &hellip;?&laquo; Das erf&auml;hrst du in der n&auml;chsten Geschichte!</div>
+</div>
+
+</div><!-- /pages -->
+
+<nav class="nav">
+  <button class="btn" id="bp" disabled aria-label="Zurueck">&#8592;</button>
+  <span class="pg" id="pg"></span>
+  <button class="btn" id="bn" aria-label="Weiter">&#8594;</button>
+</nav>
+</div><!-- /book -->
+
+<script>
+const pages = [...document.querySelectorAll('.page')];
+const N = pages.length;
+const bp = document.getElementById('bp');
+const bn = document.getElementById('bn');
+const pg = document.getElementById('pg');
+let cur = 0;
+
+function label(n) {
+  if (n <= 7) return 'G1 · ' + (n + 1) + ' / 8';
+  if (n === 8) return '···';
+  return 'G2 · ' + (n - 8) + ' / 9';
+}
+
+function go(n) {
+  if (n < 0 || n >= N) return;
+  pages[cur].classList.remove('on');
+  cur = n;
+  pages[cur].classList.add('on');
+  bp.disabled = cur === 0;
+  bn.disabled = cur === N - 1;
+  pg.textContent = label(cur);
+}
+
+go(0);
+bp.onclick = () => go(cur - 1);
+bn.onclick = () => go(cur + 1);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(cur + 1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(cur - 1);
+});
+
+let sx = 0;
+const wrap = document.getElementById('pages');
+wrap.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+wrap.addEventListener('touchend', e => {
+  const dx = sx - e.changedTouches[0].clientX;
+  if (Math.abs(dx) > 40) go(dx > 0 ? cur + 1 : cur - 1);
+}, {passive:true});
+</script>
+</body>
+</html>
